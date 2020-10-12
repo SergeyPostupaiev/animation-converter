@@ -1,2 +1,6 @@
 node_modules/
+snaps/
+tmp/
+
+kek.js
 *.png
