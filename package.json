@@ -12,7 +12,6 @@
   "license": "ISC",
   "dependencies": {
     "canvas": "^2.6.1",
-    "cors": "^2.8.5",
     "puppeteer": "^5.3.1"
   },
   "devDependencies": {

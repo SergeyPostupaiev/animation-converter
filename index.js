@@ -43,10 +43,12 @@ function handleScreenShotFinish() {
     const data = {};
 
     for (var i = 0; i < items.length; i++) {
-      const pic = await getTransparentBackground(`${SNAP_DIR}/${items[i]}`);
-      data[items[i].split('.')[0]] = pic;
+      const [fileName] = items[i].split('.');
 
-      base64ToPNG(pic, items[i], TR_DIR);
+      const pic = await getTransparentBackground(`${SNAP_DIR}/${items[i]}`);
+      data[fileName] = pic;
+
+      base64ToPNG(pic, fileName.padStart(4, '0'), TR_DIR);
     }
 
     console.log('success');
@@ -127,7 +129,7 @@ function base64ToPNG(data, fileName, dirName) {
   data = data.replace(/^data:image\/png;base64,/, '');
 
   fs.writeFile(
-    path.resolve(__dirname, `${dirName}/${fileName}`),
+    path.resolve(__dirname, `${dirName}/${fileName}.png`),
     data,
     'base64',
     (err) => {
